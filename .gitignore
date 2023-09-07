@@ -1,4 +1,4 @@
-*.eld
+*.elf
 *.nacp
 *.nro
 build/
