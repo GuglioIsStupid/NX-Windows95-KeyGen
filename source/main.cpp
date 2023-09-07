@@ -122,6 +122,7 @@ int main(void) {
     padConfigureInput(1, HidNpadStyleSet_NpadStandard);
 
     PadState pad;
+    padInitializeDefault(&pad);
 
     printf("Press A to generate a windows 95 Key.\n");
 
@@ -142,6 +143,10 @@ int main(void) {
         // Create out strings to display
         // if A is pressed
         if (kDown & HidNpadButton_A) {
+            // clear previous text
+            consoleClear();
+            printf("Press A to generate a windows 95 Key.\n");
+            
             string winKey = "Win95 Retail Key: " + 
                 to_string(retail_key_1[0]) + 
                 to_string(retail_key_1[1]) + 
@@ -185,7 +190,10 @@ int main(void) {
                 
             printf(winKey.c_str());
         }
-    }
 
+        consoleUpdate(NULL);
+    }
+    
+    consoleExit(NULL);
     return 0;
 }
